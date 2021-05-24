@@ -1,4 +1,4 @@
-package com.company.quiz.question.mupltiplechoice;
+package com.company.question.mupltiplechoice;
 
 import java.util.ArrayList;
 

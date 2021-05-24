@@ -1,11 +1,11 @@
-package com.company.quiz.question.trueorfalse;
+package com.company.question.checkbox;
 
-public class TrueOrFalse {
+public class Checkbox {
     private final int questionId;
     private String prompt;
-    private boolean answer;
+    private String answer;
 
-    public TrueOrFalse(int questionId, String prompt, boolean answer) {
+    public Checkbox(int questionId, String prompt, String answer) {
         this.questionId = questionId;
         this.prompt = prompt;
         this.answer = answer;
@@ -19,7 +19,7 @@ public class TrueOrFalse {
         return prompt;
     }
 
-    public boolean isAnswer() {
+    public String getAnswer() {
         return answer;
     }
 
@@ -27,7 +27,7 @@ public class TrueOrFalse {
         prompt = aPrompt;
     }
 
-    public void setAnswer(boolean anAnswer) {
+    public void setAnswer(String anAnswer) {
         answer = anAnswer;
     }
 }

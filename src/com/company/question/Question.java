@@ -1,11 +1,11 @@
-package com.company.quiz.question.checkbox;
+package com.company.question;
 
-public class Checkbox {
+public class Question {
     private final int questionId;
     private String prompt;
     private String answer;
 
-    public Checkbox(int questionId, String prompt, String answer) {
+    public Question(int questionId, String prompt, String answer) {
         this.questionId = questionId;
         this.prompt = prompt;
         this.answer = answer;

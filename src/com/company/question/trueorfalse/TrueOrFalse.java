@@ -1,11 +1,11 @@
-package com.company.quiz.question;
+package com.company.question.trueorfalse;
 
-public class Question {
+public class TrueOrFalse {
     private final int questionId;
     private String prompt;
-    private String answer;
+    private boolean answer;
 
-    public Question(int questionId, String prompt, String answer) {
+    public TrueOrFalse(int questionId, String prompt, boolean answer) {
         this.questionId = questionId;
         this.prompt = prompt;
         this.answer = answer;
@@ -19,7 +19,7 @@ public class Question {
         return prompt;
     }
 
-    public String getAnswer() {
+    public boolean isAnswer() {
         return answer;
     }
 
@@ -27,7 +27,7 @@ public class Question {
         prompt = aPrompt;
     }
 
-    public void setAnswer(String anAnswer) {
+    public void setAnswer(boolean anAnswer) {
         answer = anAnswer;
     }
 }
