@@ -1,35 +1,17 @@
 package com.company.question.mupltiplechoice;
 
-import java.util.ArrayList;
+import com.company.question.Question;
 
-public class MultipleChoice {
-    private final int questionId;
+import java.util.HashMap;
+
+public class MultipleChoice extends Question {
     private String prompt;
-    private ArrayList<String> answers;
+    private HashMap<String, Boolean> answers = new HashMap<>();
 
-    public MultipleChoice(int questionId, String prompt, ArrayList<String> answers) {
-        this.questionId = questionId;
-        this.prompt = prompt;
-        this.answers = answers;
+    public MultipleChoice(int questionId) {
+        super(questionId);
     }
-
-    public int getQuestionId() {
-        return questionId;
-    }
-
-    public String getPrompt() {
-        return prompt;
-    }
-
-    public ArrayList<String> getAnswers() {
-        return answers;
-    }
-
-    public void setPrompt(String aPrompt) {
-        prompt = aPrompt;
-    }
-
-    public void setAnswers(ArrayList<String> someAnswers) {
-        answers = someAnswers;
+    public void setAnswers(String answer, boolean isCorrect) {
+        answers.put(answer, isCorrect);
     }
 }

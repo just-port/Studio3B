@@ -1,33 +1,21 @@
 package com.company.question.trueorfalse;
 
-public class TrueOrFalse {
-    private final int questionId;
+import com.company.question.Question;
+
+public class TrueOrFalse extends Question {
+    private int questionId;
     private String prompt;
     private boolean answer;
 
-    public TrueOrFalse(int questionId, String prompt, boolean answer) {
-        this.questionId = questionId;
-        this.prompt = prompt;
-        this.answer = answer;
+    public TrueOrFalse(int aQuestionId) {
+        super(aQuestionId);
     }
 
-    public int getQuestionId() {
-        return questionId;
+    public void setAnswer(boolean b) {
+        answer = b;
     }
 
-    public String getPrompt() {
-        return prompt;
-    }
-
-    public boolean isAnswer() {
+    public boolean getAnswer() {
         return answer;
-    }
-
-    public void setPrompt(String aPrompt) {
-        prompt = aPrompt;
-    }
-
-    public void setAnswer(boolean anAnswer) {
-        answer = anAnswer;
     }
 }
