@@ -2,16 +2,22 @@ package com.company.question.mupltiplechoice;
 
 import com.company.question.Question;
 
-import java.util.HashMap;
+import java.util.ArrayList;
 
 public class MultipleChoice extends Question {
     private String prompt;
-    private HashMap<String, Boolean> answers = new HashMap<>();
+    private ArrayList<String> possibleAnswers = new ArrayList<>();
+    private String answer;
 
-    public MultipleChoice(int questionId) {
+    public MultipleChoice(int questionId, String aPrompt) {
         super(questionId);
+        prompt = aPrompt;
     }
-    public void setAnswers(String answer, boolean isCorrect) {
-        answers.put(answer, isCorrect);
+    public void setPossibleAnswers(String answer) {
+        possibleAnswers.add(answer);
+    }
+
+    public ArrayList<String> getPossibleAnswers() {
+        return possibleAnswers;
     }
 }
