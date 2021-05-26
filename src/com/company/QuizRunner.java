@@ -1,34 +1,27 @@
 package com.company;
 
-import com.company.question.Question;
 import com.company.question.mupltiplechoice.MultipleChoice;
 import com.company.question.trueorfalse.TrueOrFalse;
 import com.company.quiz.Quiz;
 
-import java.util.ArrayList;
-
-import static java.util.Arrays.asList;
 
 public class QuizRunner {
 
     public static void main(String[] args) {
 
-        TrueOrFalse q1 = new TrueOrFalse(101);
-        q1.setPrompt("My day is going well?");
-        q1.setAnswer("false");
+        TrueOrFalse q1 = new TrueOrFalse("1 + 1 - 1 = 3", false);
 
-        MultipleChoice q2 = new MultipleChoice(102, "In what year was I born?");
- //       q2.setPrompt("In what year was I born?");
-        q2.setPossibleAnswers("1948");
-        q2.setPossibleAnswers("1984");
-        q2.setPossibleAnswers("2004");
-        q2.setPossibleAnswers("The dawn of time?");
-        q2.setAnswer("1984");
+        MultipleChoice q2 = new MultipleChoice("In what year was I born?", "1984");
+        q2.setPossibleAnswers("2284", "1984", "1684", "2084");
 
-        ArrayList<Question> listOfQuestions = new ArrayList<>(asList(q1, q2));
+        TrueOrFalse q3 = new TrueOrFalse("1 = 2", false);
+        TrueOrFalse q4 = new TrueOrFalse("1 + 1 = 2", true);
 
-        Quiz jeopardy = new Quiz(1, listOfQuestions);
+        Quiz jeopardy = new Quiz();
+
+        jeopardy.addQuestions(q1, q2, q3, q4);
 
         jeopardy.askQuestions();
+        jeopardy.gradeQuiz();
     }
 }

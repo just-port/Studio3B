@@ -2,24 +2,25 @@ package com.company.question.trueorfalse;
 
 import com.company.question.Question;
 
-import static java.lang.String.valueOf;
-
 public class TrueOrFalse extends Question {
-    private int questionId;
-    private String prompt;
+
     private boolean answer;
 
-    public TrueOrFalse(int aQuestionId) {
-        super(aQuestionId);
+    public TrueOrFalse(String prompt, boolean anAnswer) {
+        super(prompt);
+        answer = anAnswer;
     }
 
     @Override
-    public void setAnswer(String anAnswer) {
-        answer = Boolean.getBoolean(anAnswer);
+    public void showAnswers() {
+        System.out.println("1. True\n2. False");
     }
 
-    @Override
-    public String getAnswer() {
-        return valueOf(answer);
+    public void setAnswer(boolean anAnswer) {
+        answer = anAnswer;
+    }
+
+    public boolean getAnswer() {
+        return answer;
     }
 }

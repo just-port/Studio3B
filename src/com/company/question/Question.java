@@ -1,37 +1,21 @@
 package com.company.question;
 
-public class Question {
-    private final int questionId;
+public abstract class Question {
+
     private String prompt;
-    private String answer;
 
-    public Question(int questionId, String prompt, String answer) {
-        this.questionId = questionId;
+    public Question(String prompt) {
         this.prompt = prompt;
-        this.answer = answer;
     }
 
-    public Question(int questionId) {
-        this.questionId = questionId;
+    public void askQuestion() {
+        System.out.println(prompt);
     }
 
-    public int getQuestionId() {
-        return questionId;
-    }
+    public abstract void showAnswers();
 
-    public String getPrompt() {
-        return prompt;
-    }
-
-    public String getAnswer() {
-        return answer;
-    }
     public void setPrompt(String aPrompt) {
         prompt = aPrompt;
-    }
-
-    public void setAnswer(String anAnswer) {
-        answer = anAnswer;
     }
 
 }

@@ -1,3 +1,4 @@
+/*
 package com.company.question.checkbox;
 
 import com.company.question.Question;
@@ -12,3 +13,4 @@ public class Checkbox extends Question {
         super(questionId);
     }
 }
+*/

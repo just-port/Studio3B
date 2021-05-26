@@ -4,60 +4,65 @@ import com.company.question.Question;
 import com.company.question.mupltiplechoice.MultipleChoice;
 import com.company.question.trueorfalse.TrueOrFalse;
 
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.*;
 
 public class Quiz {
-    private final int quizId;
-    ArrayList<Question> questions;
-    ArrayList<String> userAnswers;
+    ArrayList<Question> questions = new ArrayList<>();
+    List<String> userAnswers = new ArrayList<>();
+    Scanner in = new Scanner(System.in);
 
-    public Quiz(int id, ArrayList<Question> questionArrayList) {
-        this.quizId = id;
-        this.questions = questionArrayList;
-        userAnswers = new ArrayList<>();
-    }
-
-    public void addQuestion(Question aQuestion) {
-        questions.add(aQuestion);
-    }
-
-    public void addMultipleQuestions(ArrayList<Question> questionArrayList) {
-        questions.addAll(questionArrayList);
-    }
-
-    public int getQuizId() {
-        return quizId;
+    public void addQuestions(Question ... someQuestions) {
+        questions.addAll(Arrays.asList(someQuestions));
     }
 
     public void askQuestions() {
-        int i = 0;
         for (Question aQuestion : questions) {
-
-
+            aQuestion.askQuestion();
+            aQuestion.showAnswers();
+            int userAnswer = in.nextInt();
 
             if (aQuestion instanceof TrueOrFalse) {
-                Scanner in = new Scanner(System.in);
-                System.out.println(aQuestion.getPrompt() + "\n1: True\n2: False");
-                int userSelection = in.nextInt();
-
-                while (userSelection != 1 && userSelection != 2) {
+                boolean correctAnswer = ((TrueOrFalse) aQuestion).getAnswer();
+                boolean userAnswerBoolean;
+                while (userAnswer != 1 && userAnswer != 2) {
                     System.out.println("Please choose 1 for true or 2 for false.");
-                    userSelection = in.nextInt();
+                    userAnswer = in.nextInt();
                 }
-
-                if (userSelection == 1) {
-                    userAnswers.add(i, "true");
-                } else {
-                    userAnswers.add(i, "false");
+                if (userAnswer == 1) {
+                    userAnswerBoolean = true;
+                    if (correctAnswer) {
+                        userAnswers.add("correct");
+                    }
+                }
+                if (userAnswer == 2) {
+                    userAnswerBoolean = false;
+                    if (!correctAnswer) {
+                        userAnswers.add("correct");
+                    }
                 }
             }
 
             if (aQuestion instanceof MultipleChoice) {
-                int numberOfPossibleAnswers = ((MultipleChoice) aQuestion).getPossibleAnswers().size()-1;
-                while ()
-
+                int maxAnswerRange = ((MultipleChoice) aQuestion).getPossibleAnswers().size();
+                int correctAnswer = ((MultipleChoice) aQuestion).getPossibleAnswers().indexOf(((MultipleChoice) aQuestion).getAnswer());
+                while (userAnswer > maxAnswerRange || userAnswer < 0) {
+                    System.out.println("Please enter the number associated with your answer");
+                    userAnswer = in.nextInt();
+                }
+                if (userAnswer - 1 == correctAnswer) {
+                    userAnswers.add("correct");
+                } else {
+                    userAnswers.add("incorrect");
+                }
             }
         }
+        in.close();
+    }
+
+    public void gradeQuiz() {
+        int correctAnswers = Collections.frequency(userAnswers, "correct");
+        int totalNumberOfQuestions = questions.size();
+
+        System.out.println("You answered " + correctAnswers + " correctly out of " + totalNumberOfQuestions + ". Good job?");
     }
 }
